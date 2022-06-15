@@ -1,0 +1,230 @@
+.card {
+    margin-bottom: 50px;
+    .title {
+      h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        .fa-video {
+          color: #a30101;
+          margin-right: 15px;
+        }
+        .fa-chevron-right {
+          margin-left: 15px;
+        }
+        a {
+          color: #fff;
+        }
+      }
+    }
+    .list {
+      // .list-start,
+      .list-end {
+        .row-list {
+          display: flex;
+          gap: 10px;
+          .film {
+            flex-basis: calc((100% - 10px) / 2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 276px;
+            .film-card {
+              width: 100%;
+              height: 100%;
+              img {
+                width: 100%;
+                height: 100%;
+                transition: 0.5s;
+                &:hover {
+                  transform: scale(1.3);
+                }
+              }
+              .body {
+                position: absolute;
+                padding: 0px 10px;
+                bottom: 10px;
+                width: 100%;
+                .resolution {
+                  font-size: 11px;
+                  text-transform: uppercase;
+                  font-weight: 500;
+                  border-radius: 2px;
+                  background-color: #ff4c00;
+                  padding: 1px 2px;
+                }
+                .evaluate {
+                  float: right;
+                  font-size: 14px;
+                  i {
+                    color: #e89105;
+                    font-size: 14px;
+                    margin-right: 3px;
+                  }
+                }
+                .times {
+                  float: right;
+                  font-size: 12px;
+                }
+                p {
+                  color: #fff;
+                  font-size: 14px;
+                  text-transform: capitalize;
+                }
+                span {
+                  color: #fff;
+                }
+                .practice {
+                  font-size: 11px;
+                }
+                .views {
+                  font-size: 12px;
+                }
+                .name-film {
+                  p {
+                    font-size: 16px;
+                  }
+                }
+              }
+              .banner {
+                position: absolute;
+                left: 10px;
+                top: 15px;
+                transition: 0.25s;
+                p {
+                  color: rgb(192, 240, 240);
+                  background: rgb(128, 124, 124);
+                  padding: 0px 3px;
+                  font-size: 14px;
+                  border-radius: 5px;
+                  font-weight: 100;
+                }
+              }
+              .play {
+                position: absolute;
+                left: -100px;
+                top: 15px;
+                transition: 0.5s;
+                i {
+                  font-size: 40px;
+                  padding: 10px 10px;
+                  color: #fff;
+                  background-color: rgba($color: #000000, $alpha: 0.4);
+                  border-radius: 50%;
+                  box-shadow: 0 0 10px #fff;
+                }
+              }
+              &:hover {
+                .banner {
+                  left: -100px;
+                }
+                .play {
+                  left: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+.card {
+  .list {
+      .list-end {
+          margin-top: 10px;
+          .row-list {
+              flex-wrap: wrap;
+              .film:nth-child(1),
+              .film:nth-child(2) {
+                  flex-basis: calc((100% - 10px) / 2);
+                  height: 276px;
+              }
+              .film {
+                  flex-basis: calc((100% - 30px) / 4);
+                  height: 346px;
+              }
+          }
+      }
+  }
+}
+
+
+/* >= Tablet */
+@media(max-width:794px){
+  .wide {
+    width: 600px;
+  }
+  .card {
+    .list {
+        .list-end {
+            .row-list {
+                flex-wrap: wrap;
+                .film:nth-child(1),.film:nth-child(2) {
+                    height: 180px;
+                }
+                .film{
+                  height: 220px;
+                }
+            }
+        }
+    }
+  }
+}
+/* mobile */
+@media(max-width:635px){
+  .wide {
+    width: 460px;
+  }
+  .card {
+    .list {
+        .list-end {
+            .row-list {
+                flex-wrap: wrap;
+                .film:nth-child(1),.film:nth-child(2) {
+                  flex-basis: 100%;
+                  height: 260px;
+                }
+                .film{
+                  flex-basis: calc((100% - 10px)/2);
+                  height: 325px;
+
+                }
+            }
+        }
+    }
+  }
+}
+@media(max-width:1023px){
+  .nav{
+    display: none !important;
+  }
+  .nav-mobile{
+    display: block !important;
+  }
+}
+/* Tablet - PC low resolution */
+@media (min-width: 795px) and (max-width: 1023px) {
+  .wide {
+    width: 790px;
+  }
+  .card {
+    .list {
+        .list-end {
+            .row-list {
+                flex-wrap: wrap;
+                .film:nth-child(1),.film:nth-child(2) {
+                    height: 220px;
+                }
+                .film{
+                  height: 271px;
+                }
+            }
+        }
+    }
+  }
+}
+
+
