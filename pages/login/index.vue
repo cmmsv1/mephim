@@ -32,7 +32,8 @@ import Loading from '~/components/Loading.vue'
 export default {
     components: { Loading },
     layout: 'blog',
-    // auth: false,
+    auth: false,
+    middleware: 'redirect',
     data() {
         return {
             loading: false,

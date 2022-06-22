@@ -115,6 +115,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="row row-category">
+                    <category-movie :categories="categoryAndMovies" />
+                </div>
             </div>
         </div>
         <loading v-if="loading" :load="load" />
@@ -122,10 +125,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Loading from '~/components/Loading.vue'
-// import { mapActions } from 'vuex'
+import CategoryMovie from '~/components/Main/CategoryMovie.vue'
 export default {
-    components: { Loading },
+    components: { Loading, CategoryMovie },
     auth: false,
     validate({ params, store }) {
         store.state.movies.forEach((movie) => {
@@ -158,8 +162,10 @@ export default {
         movie() {
             return this.$store.getters.getMovieBySlug(this.$route.params.slug)
         },
+        ...mapState(['categoryAndMovies']),
     },
     mounted() {
+        this.$store.dispatch('getCategoryAndMovie')
         if (
             this.movie.typeFilm === 'phim-bo' &&
             this.movie.episode.length > 0
@@ -264,6 +270,9 @@ export default {
                 }
             }
         }
+    }
+    .row-category {
+        margin-top: 50px;
     }
 }
 @media (max-width: 1023px) {

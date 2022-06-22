@@ -18,27 +18,7 @@
                     </ul>
                 </div>
                 <div class="right-element" tabindex="0">
-                    <div class="search-bar">
-                        <input
-                            v-model="search"
-                            type="text"
-                            placeholder="Tìm kiếm"
-                        />
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="modal-search">
-                        <div class="modal">
-                            <div class="search-result">
-                                <span v-if="search.length < 1">{{
-                                    searchResult
-                                }}</span>
-                                <loading
-                                    v-if="search.length > 0"
-                                    :load="load"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <search />
                 </div>
             </div>
             <div class="nav-mobile">
@@ -55,20 +35,7 @@
                     <div class="icon-close">
                         <i class="fa-solid fa-xmark" @click="closeMenu"></i>
                     </div>
-                    <div class="search-bar">
-                        <input
-                            v-model="search"
-                            type="text"
-                            placeholder="Tìm kiếm"
-                        />
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="search-result">
-                        <span v-if="search.length < 1">
-                            {{ searchResult }}</span
-                        >
-                        <loading v-if="search.length > 0" :load="load" />
-                    </div>
+                    <search />
                     <ul>
                         <li
                             v-for="(category, index) in moviesCategories"
@@ -88,9 +55,9 @@
 <script>
 // import axios from 'axios'
 import { mapState } from 'vuex'
-import Loading from '../Loading.vue'
+import Search from '../Search.vue'
 export default {
-    components: { Loading },
+    components: { Search },
     data() {
         return {
             searchResult: 'Nhập tên phim để tìm kiếm',
@@ -148,6 +115,7 @@ export default {
                 line-height: 60px;
                 margin-right: 40px;
             }
+
             .menu {
                 position: absolute;
                 top: 0;
@@ -158,22 +126,41 @@ export default {
                 padding: 20px 10px;
                 z-index: 10;
                 transition: ease-in 0.3s;
-                .search-result {
-                    display: none;
-                    color: #ccc;
-                    position: relative;
-                    font-size: 15px;
-                    .loading {
-                        position: absolute;
-                        left: 50%;
-                        transform: translateX(-50%);
+                .search {
+                    .search-bar {
+                        position: relative;
+                        padding: 0;
+                        margin-top: 30px;
+                        i {
+                            right: 10px;
+                        }
+                    }
+                    .modal-search {
+                        display: none;
+                        width: 100%;
+                        padding: 10px 10px 10px 0px;
+                        .modal-f {
+                            .search-result {
+                                color: #ccc;
+                                position: relative;
+                                max-height: 100vh;
+                                // min-height: 500px;
+                                font-size: 15px;
+                                .loading {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                }
+                            }
+                        }
                     }
                 }
                 &:focus-within {
                     ul {
                         display: none;
                     }
-                    .search-result {
+                    .modal-search {
                         display: block;
                     }
                 }
@@ -187,16 +174,9 @@ export default {
                         cursor: pointer;
                     }
                 }
-                .search-bar {
-                    position: relative;
-                    padding: 0;
-                    margin-bottom: 20px;
-                    margin-top: 30px;
-                    i {
-                        right: 10px;
-                    }
-                }
+
                 ul {
+                    margin-top: 20px;
                     li {
                         list-style: none;
                         padding: 10px 0px;
@@ -277,25 +257,6 @@ export default {
                         display: block;
                     }
                 }
-                .modal-search {
-                    background-color: rgba(0, 0, 0, 0.8);
-                    width: 320px;
-                    min-height: 130px;
-                    z-index: 1;
-                    padding: 40px 10px 10px 10px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    display: none;
-                    .modal {
-                        display: flex;
-                        min-height: 80px;
-                        .search-result {
-                            margin: auto;
-                            color: #ccc;
-                        }
-                    }
-                }
             }
         }
     }
@@ -312,39 +273,6 @@ h4 {
         color: #fff;
         font-size: 20px;
         cursor: pointer;
-    }
-}
-
-.search-bar {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    z-index: 20;
-    padding: 0px 10px;
-    margin-top: 12px;
-    input {
-        width: 100%;
-        border-radius: 15px;
-        overflow: hidden;
-        padding: 6px 10px;
-        background: 0 0;
-        border: 1px solid #444;
-        color: #fff;
-        &:focus {
-            outline: none;
-            border-color: #0285b5;
-        }
-    }
-
-    i {
-        position: absolute;
-        top: 8px;
-        right: 25px;
-        color: #ccc;
-        cursor: pointer;
-        &:hover {
-            color: #ff4c00;
-        }
     }
 }
 </style>
