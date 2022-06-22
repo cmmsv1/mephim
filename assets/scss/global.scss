@@ -151,7 +151,10 @@
   }
 }
 
-
+.card:last-child{
+  margin-bottom: 0;
+  padding-bottom: 50px;
+}
 /* >= Tablet */
 @media(max-width:794px){
   .wide {

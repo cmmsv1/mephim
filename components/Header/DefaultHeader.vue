@@ -15,26 +15,6 @@
                                 category.name
                             }}</nuxt-link>
                         </li>
-                        <!-- <li>
-                            <nuxt-link to="/movietheaters"
-                                >Phim chiếu rạp</nuxt-link
-                            >
-                        </li>
-                        <li>
-                            <nuxt-link to="/oddmovie">Phim lẻ</nuxt-link>
-                        </li>
-                        <li>
-                            <nuxt-link to="/seriesmovie">phim bộ</nuxt-link>
-                        </li>
-                        <li>
-                            <nuxt-link to="/american">mỹ</nuxt-link>
-                        </li>
-                        <li>
-                            <nuxt-link to="/korea">hàn</nuxt-link>
-                        </li>
-                        <li>
-                            <nuxt-link to="/japan">nhật</nuxt-link>
-                        </li> -->
                     </ul>
                 </div>
                 <div class="right-element" tabindex="0">

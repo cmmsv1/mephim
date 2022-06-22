@@ -1,7 +1,8 @@
 import axios from 'axios'
 export const state = () => ({
     moviesCategories:[],
-    movies:[]
+    movies:[],
+    categoryAndMovies:[]
 })
 
 export const getters = {
@@ -10,8 +11,8 @@ export const getters = {
     },
     getMovieBySlug: (state) => (slug) => {
         return state.movies.find((movie)=> movie.slug === slug )
-    }
-   
+    },
+
 }
 export const mutations ={
     setMovieCategory(state,moviesCategories){
@@ -19,7 +20,11 @@ export const mutations ={
     },
     setMovie(state,movies){
         state.movies = movies
-    }
+    },
+    setcategoryAndMovies(state,payload){
+        state.categoryAndMovies = payload
+    },
+   
 }
 export const actions ={
     async nuxtServerInit({ commit }) {
@@ -38,6 +43,16 @@ export const actions ={
     },
     getMovieBySlug({state},slug){
         return state.movies.filter((movie)=> movie.slug === slug )
-    }
+    },
+    async getCategoryAndMovie({commit}) {
+        const result = await axios.get(
+            `http://localhost:8000/api/getCategoryAndFilm`
+        )
+        commit('setcategoryAndMovies',result.data)
+    },
+    
+   
+    
+    
     
 }

@@ -22,11 +22,12 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-// .root {
-//     background-color: #333 !important;
-// }
+.root {
+    background-color: #333 !important;
+    min-height: 100vh;
+}
 .grid.wide {
-    margin-top: 80px;
+    padding-top: 50px;
     .main {
         margin-top: 50px;
     }

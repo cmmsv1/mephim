@@ -1,6 +1,9 @@
 <template>
     <div class="loading" :class="{ full: load.full }">
-        <div class="bg">
+        <div
+            :class="{ bg: !load.auth }"
+            :style="{ left: `calc(50% - (${load.width})/2)` }"
+        >
             <span
                 :style="{
                     width: load.width + 'px',
@@ -30,16 +33,16 @@ export default {
         position: absolute;
         margin: 0 auto;
         top: 50%;
-        left: 50%;
-        span {
-            display: block;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: #fff;
-            animation: circle-loading 1200ms ease infinite;
-        }
+        left: calc(50% - 20px);
+    }
+    span {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: #fff;
+        animation: circle-loading 1200ms ease infinite;
     }
 }
 .loading.full {
