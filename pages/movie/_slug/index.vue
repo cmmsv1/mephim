@@ -165,6 +165,10 @@ export default {
         ...mapState(['categoryAndMovies']),
     },
     mounted() {
+        this.loading = true
+        setTimeout(() => {
+            this.loading = false
+        }, 800)
         this.$store.dispatch('getCategoryAndMovie')
         if (
             this.movie.typeFilm === 'phim-bo' &&

@@ -11,7 +11,12 @@
             <div class="list-end">
                 <div class="row-list">
                     <div v-for="(movie, id) in movies" :key="id" class="film">
-                        <nuxt-link :to="{ path: 'movie/' + movie.slug }">
+                        <nuxt-link
+                            :to="{
+                                name: 'movie-slug',
+                                params: { slug: movie.slug },
+                            }"
+                        >
                             <div class="film-card">
                                 <img
                                     src="https://s198.imacdn.com/ff/2021/12/15/4d9a3e417ca4e22f_97a8c41b01edf99e_35068163957541383816.jpg"

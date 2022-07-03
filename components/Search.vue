@@ -7,19 +7,45 @@
         <div class="modal-search">
             <div class="modal-f">
                 <div class="search-result">
-                    <p v-if="search.length < 1" class="text-result">
+                    <p
+                        v-if="dataSearch.length < 1 && search.length < 1"
+                        class="text-result"
+                    >
                         {{ searchResult }}
                     </p>
-                    <div v-if="search.length > 0" class="result-item">
-                        <div class="item">
+                    <p
+                        v-if="dataSearch.length < 1 && search.length > 1"
+                        class="text-result"
+                    >
+                        {{ searchResult2 }}
+                    </p>
+                    <div v-if="dataSearch.length > 0" class="result-item">
+                        <div
+                            v-for="(item, id) in dataSearch"
+                            :key="id"
+                            class="item"
+                        >
                             <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
+                                <nuxt-link
+                                    :to="{
+                                        name: 'movie-slug',
+                                        params: { slug: item.slug },
+                                    }"
+                                    ><img
+                                        src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
+                                        alt=""
+                                /></nuxt-link>
                             </div>
                             <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
+                                <div class="item-title">
+                                    <nuxt-link
+                                        :to="{
+                                            name: 'movie-slug',
+                                            params: { slug: item.slug },
+                                        }"
+                                        >{{ item.name }}</nuxt-link
+                                    >
+                                </div>
                                 <div class="episode">
                                     <span>2020</span><span>(46/46)</span>
                                 </div>
@@ -27,144 +53,13 @@
                                                     <span>2020</span
                                                     ><span>(46/46)</span>
                                                 </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
+                                <div class="views">
+                                    {{ item.view }} lượt xem
                                 </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-img">
-                                <img
-                                    src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="item-content">
-                                <div class="item-title">Mong hoa luc</div>
-                                <div class="episode">
-                                    <span>2020</span><span>(46/46)</span>
-                                </div>
-                                <!-- <div class="time">
-                                                    <span>2020</span
-                                                    ><span>(46/46)</span>
-                                                </div> -->
-                                <div class="views">251k lượt xem</div>
                             </div>
                         </div>
                     </div>
-                    <loading v-if="search.length > 0" :load="load" />
+                    <loading v-if="loading" :load="load" />
                 </div>
             </div>
         </div>
@@ -172,6 +67,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Loading from './Loading.vue'
 
 export default {
@@ -179,17 +75,39 @@ export default {
     data() {
         return {
             searchResult: 'Nhập tên phim để tìm kiếm',
+            searchResult2: 'Không tìm thấy phim phù hợp',
             search: '',
-            // custom loading
+            loading: false,
+            dataSearch: [],
             load: {
                 width: 40,
                 height: 40,
                 color: '#0285b5',
                 full: false,
             },
-            header: [],
         }
     },
+    watch: {
+        search(newValue) {
+            this.loading = true
+            axios
+                .post('http://localhost:8000/searchFilm', {
+                    search: newValue,
+                })
+                .then((res) => {
+                    if (res.data) {
+                        this.dataSearch = res.data
+                    } else {
+                        this.dataSearch = []
+                    }
+                    this.loading = false
+                })
+        },
+        '$route.query'() {
+            this.search = ''
+        },
+    },
+    methods: {},
 }
 </script>
 
@@ -292,7 +210,13 @@ export default {
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                 white-space: nowrap;
-                                color: #0285b5;
+                                cursor: pointer;
+                                a {
+                                    color: #0285b5;
+                                    &:hover {
+                                        color: #07bbfc;
+                                    }
+                                }
                             }
                             .episode,
                             .time {

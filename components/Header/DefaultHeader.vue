@@ -62,7 +62,6 @@ export default {
         return {
             searchResult: 'Nhập tên phim để tìm kiếm',
             left: -500,
-            search: '',
             menuMobile: false,
             // custom loading
             load: {
@@ -74,12 +73,14 @@ export default {
             header: [],
         }
     },
-    // mounted() {
-    //     this.getAllCategory()
+    // created() {
+    //     this.search = 'sadsadas'
+    //     console.log('sadsad')
     // },
     computed: {
         ...mapState(['moviesCategories']),
     },
+
     methods: {
         openMenu() {
             this.menuMobile = !this.menuMobile
