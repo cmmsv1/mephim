@@ -49,3 +49,65 @@ input {
   padding: 0;
 }
 
+/* table css */
+#table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td,
+#table th {
+  border: 1px solid rgb(155, 154, 154);
+  padding: 8px;
+  font-size: 14px;
+}
+
+#table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#table tr:hover {
+  background-color: #ddd;
+}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #04aa6d;
+  color: white;
+}
+
+/* paginate css */
+.paginate {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginate ul {
+  display: flex;
+}
+.paginate ul li {
+  padding: 3px;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #04aa6d;
+  border-radius: 20px;
+  margin: 0px 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.paginate ul li:hover {
+  background-color: #04aa6d;
+  border-color: aqua;
+}
+.paginate ul li i {
+  font-size: 12px;
+}
+.paginate ul li span {
+  font-size: 23px;
+}
+.paginate ul li.active {
+  background-color: #04aa6d;
+  border-color: aqua;
+}

@@ -35,7 +35,7 @@
                     <div class="icon-close">
                         <i class="fa-solid fa-xmark" @click="closeMenu"></i>
                     </div>
-                    <search />
+                    <search @closeMobile="closeMenu" />
                     <ul>
                         <li
                             v-for="(category, index) in moviesCategories"
@@ -83,11 +83,11 @@ export default {
 
     methods: {
         openMenu() {
-            this.menuMobile = !this.menuMobile
+            this.menuMobile = true
             this.left = 0
         },
         closeMenu() {
-            this.menuMobile = !this.menuMobile
+            this.menuMobile = false
             this.left = -500
         },
         // getAllCategory() {

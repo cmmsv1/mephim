@@ -105,6 +105,7 @@ export default {
         },
         '$route.query'() {
             this.search = ''
+            this.$emit('closeMobile')
         },
     },
     methods: {},

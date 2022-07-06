@@ -18,9 +18,11 @@ export default {
     // background: #fff;
     .box {
         width: 100%;
+        margin: 10px;
         padding: 20px;
-        // border-radius: 20px;
-        // box-shadow: 0px 0px 5px 5px rgba($color: #1e293b, $alpha: 0.3);
+        // min-height: 100vh;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 5px rgba($color: #1e293b, $alpha: 0.3);
     }
 }
 </style>
