@@ -2,6 +2,29 @@
     <div class="film-list">
         <h2>Danh sách phim</h2>
         <div class="list">
+            <div class="action">
+                <div class="search-bar">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search ..."
+                        />
+                    </div>
+                    <div class="form-group ml-3">
+                        <select class="form-control">
+                            <option
+                                v-for="(category, id) in moviesCategories"
+                                :key="id"
+                                :value="category.slug"
+                            >
+                                {{ category.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn right btn-primary">Thêm mới phim</button>
+            </div>
             <table id="table">
                 <thead>
                     <tr>
@@ -10,10 +33,14 @@
                         <th align="left">Tên English</th>
                         <th align="left">Thể loại</th>
                         <th align="left">Ảnh phim</th>
+                        <th align="center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(movie, id) in movies.slice(0, 7)" :key="id">
+                    <tr
+                        v-for="(movie, id) in movies.slice(0, pageSize - 1)"
+                        :key="id"
+                    >
                         <td align="center">{{ movie.id }}</td>
                         <td>{{ movie.name }}</td>
                         <td>{{ movie.eng_name }}</td>
@@ -25,6 +52,12 @@
                                 height="50px"
                                 alt=""
                             />
+                        </td>
+                        <td>
+                            <div class="center">
+                                <i class="fa-solid fa-pencil"></i>
+                                <i class="fa-solid fa-trash"></i>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -44,11 +77,15 @@
                         ></nuxt-link>
                     </li>
 
-                    <li class="active"><nuxt-link to="#">1</nuxt-link></li>
-                    <li><nuxt-link to="#">2</nuxt-link></li>
-                    <li><nuxt-link to="#">3</nuxt-link></li>
-                    <li><nuxt-link to="#">4</nuxt-link></li>
-                    <li><nuxt-link to="#">5</nuxt-link></li>
+                    <li
+                        v-for="page in parseInt(totalPage)"
+                        :key="page"
+                        :class="{ active: page == currentPage }"
+                    >
+                        <nuxt-link to="#" @click.prevent="currentPage = page">{{
+                            page
+                        }}</nuxt-link>
+                    </li>
                     <li>
                         <nuxt-link to="#"
                             ><i class="fa-solid fa-chevron-right"></i
@@ -72,8 +109,19 @@ import { mapState } from 'vuex'
 export default {
     layout: 'dashboard',
     middleware: 'auth',
+    data() {
+        return {
+            pageSize: 7,
+            totalPage: 0,
+            currentPage: 1,
+        }
+    },
     computed: {
-        ...mapState(['movies']),
+        ...mapState(['movies', 'moviesCategories']),
+    },
+    mounted() {
+        this.totalPage = this.movies.length / this.pageSize
+        console.log(Math.ceil(this.totalPage))
     },
 }
 </script>
@@ -85,6 +133,26 @@ export default {
     }
     .list {
         margin-top: 40px;
+    }
+    .action {
+        display: flex;
+        margin-bottom: 20px;
+        .btn {
+            padding: 10px 10px;
+            color: #fff;
+            outline: none;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #04aa6d;
+        }
+        .right {
+            margin-left: auto;
+        }
+        .search-bar {
+            display: flex;
+        }
     }
 }
 </style>
